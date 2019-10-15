@@ -4,7 +4,7 @@ LFLAGS = -L/home/wondrash/Dropbox/c++/lib
 INCLUDES = -I/home/wondrash/Dropbox/c++/include
 LIBS = -lprops
 STATLIB = /home/wondrash/c++/lib/libprops.a
-SRCS = core.cpp main.cpp addjob.cpp killjob.cpp statusjob.cpp slash.cpp commit.cpp
+SRCS = core.cpp main.cpp addjob.cpp killjob.cpp statusjob.cpp slash.cpp commit.cpp readprob.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 default: submitter addjob killjob statusjob slash commit
@@ -19,10 +19,13 @@ slash: $(OBJS)
 submitter: $(OBJS)
 	$(CC) $(INCLUDES) $(CFLAGS) $(LFLAGS) core.o main.o $(STATLIB) -o submitter
 
+readprob: $(OBJS)
+	$(CC) $(INCLUDES) $(CFLAGS) $(LFLAGS) core.o readprob.o $(STATLIB) -o readprob
+
 commit:
 	$(CC) $(INCLUDES) $(CFLAGS) $(LFLAGS) core.o commit.o $(STATLIB) -o commit
 
-addjob:
+addjob: core.o addjob.o
 	$(CC) $(INCLUDES) $(CFLAGS) $(LFLAGS) core.o addjob.o $(STATLIB) -o addjob
 
 killjob:

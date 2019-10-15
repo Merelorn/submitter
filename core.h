@@ -101,10 +101,10 @@ inline std::string str_time(std::time_t arg_time = 0){
 }
 
 bool initialize(std::map< std::string, std::string > & file_paths);
-bool vvs_to_vj (std::vector< std::vector< std::string > > config_vvs, std::vector< Job > & parsed, joblist_type jt_type);
+bool vvs_to_vj (const std::vector< std::vector< std::string > > & config_vvs, std::vector< Job > & parsed, joblist_type jt_type);
 bool vvs_to_map_config (std::vector< std::vector< std::string > > config_vvs, std::map< std::string, std::string > & parsed);
-bool textfile_to_vvs(const std::string config_path, std::vector< std::vector< std::string > > & config_vvs, bool longlock = false);
-bool vj_to_textfile(std::vector< Job > jobs_vj, std::string target_file, joblist_type jt_type = JT_RUNNING, bool append = false, bool ignore_longlock = false);
+bool textfile_to_vvs(const std::string & config_path, std::vector< std::vector< std::string > > & config_vvs, bool longlock = false);
+bool vj_to_textfile(const std::vector< Job > & jobs_vj, std::string target_file, joblist_type jt_type = JT_RUNNING, bool append = false, bool ignore_longlock = false);
 bool claim_id(std::string id_file, long & id);
 
 bool lock_and_access(const std::string target_file, const std::string & msg, bool create_longlock = false, bool ignore_longlock = false);
